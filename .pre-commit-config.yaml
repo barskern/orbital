@@ -16,19 +16,30 @@ repos:
   hooks:
   - id: black
     name: black
-    entry: black
+    entry: poetry run black
     language: system
     types: [ python ]
     files: ^(orbital|tests)
   - id: isort
     name: isort
-    entry: isort
+    entry: poetry run isort
     language: system
     types: [ python ]
     files: ^(orbital|tests)
   - id: flake8
     name: flake8
-    entry: flake8
+    entry: poetry run flake8
     language: system
     types: [ python ]
     files: ^(orbital|tests)
+  - id: autoflake8
+    name: autoflake8
+    entry: poetry run autoflake8
+    language: system
+    types: [ python ]
+    files: ^(orbital|tests)
+    args:
+      - "--in-place"
+      - "--expand-star-imports"
+      - "--remove-duplicate-keys"
+      - "--remove-unused-variables"
