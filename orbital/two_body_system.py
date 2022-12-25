@@ -124,6 +124,8 @@ def init():
 
         ax.set_title(f"Reference {ref_name}")
 
+    return [ln for lns in lnss for ln in lns]
+
 
 def animate(i):
     for (ref_name, reference), ax, lns in zip(refs, axs.flat, lnss):
@@ -141,9 +143,11 @@ def animate(i):
         lns[2].set_data(barycenter_[:2])
         lns[2].set_3d_properties(barycenter_[2])
 
+    return [ln for lns in lnss for ln in lns]
+
 
 ani = FuncAnimation(
-    fig, animate, init_func=init, frames=len(t_points), interval=10, repeat=True
+    fig, animate, init_func=init, frames=len(t_points), interval=10, repeat=True, blit=True
 )
 
 plt.show()
